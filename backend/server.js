@@ -15,6 +15,13 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// Use CORS for Cross Origin Resource Sharing
+app.use(cors({
+  origin: "*",
+  credentials: true
+}))
+app.options('*', cors());  // This ensures OPTIONS requests are handled for all routes
+
 // Connect to MongoDB
 
 mongoose.connect(process.env.MONGODB_URI,
